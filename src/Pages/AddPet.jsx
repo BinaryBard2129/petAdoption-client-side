@@ -46,7 +46,7 @@ const AddPet = () => {
           adopted: false,
         };
 
-        const res = await axios.post('http://localhost:5000/pets', petData);
+        const res = await axios.post('https://pet-adoption-server-steel.vercel.app/pets', petData);
         console.log('Pet added:', res.data);
         resetForm();
         alert('Pet added successfully!');

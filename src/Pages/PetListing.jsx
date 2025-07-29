@@ -18,7 +18,7 @@ const PetListing = () => {
     if (search) params.search = search;
     if (category) params.category = category;
 
-    const res = await axios.get("http://localhost:5000/pets", { params });
+    const res = await axios.get("https://pet-adoption-server-steel.vercel.app/pets", { params });
     return { pets: res.data.pets, nextPage: pageParam + 1, hasMore: res.data.hasMore };
   };
 

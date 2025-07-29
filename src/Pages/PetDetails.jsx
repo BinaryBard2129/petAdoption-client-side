@@ -13,7 +13,7 @@ const PetDetails = () => {
   const { data: pet, isLoading, error } = useQuery({
     queryKey: ["pet", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/pets/${id}`);
+      const res = await axios.get(`https://pet-adoption-server-steel.vercel.app/pets/${id}`);
       return res.data;
     }
   });
@@ -57,7 +57,7 @@ const PetDetails = () => {
         };
 
         try {
-          await axios.post("http://localhost:5000/adoptions", adoptionData);
+          await axios.post("https://pet-adoption-server-steel.vercel.app/adoptions", adoptionData);
           Swal.fire('Success!', 'Adoption request submitted!', 'success');
         } catch (err) {
           Swal.fire('Error!', 'Something went wrong. Please try again.', 'error');

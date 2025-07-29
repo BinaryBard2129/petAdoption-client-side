@@ -13,7 +13,7 @@ const CheckoutForm = ({ donationId, amount, onSuccess }) => {
     setProcessing(true);
 
     try {
-      const { data } = await axios.post("http://localhost:5000/create-payment-intent", {
+      const { data } = await axios.post("https://pet-adoption-server-steel.vercel.app/create-payment-intent", {
         amount,
       });
 
@@ -33,7 +33,7 @@ const CheckoutForm = ({ donationId, amount, onSuccess }) => {
       if (result.error) {
         setError(result.error.message);
       } else if (result.paymentIntent.status === "succeeded") {
-        await axios.post("http://localhost:5000/donations", {
+        await axios.post("https://pet-adoption-server-steel.vercel.app/donations", {
           donationId,
           amount,
           transactionId: result.paymentIntent.id,

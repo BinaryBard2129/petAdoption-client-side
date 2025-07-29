@@ -16,7 +16,7 @@ const MyAddedPets = ({ user }) => {
   useEffect(() => {
     if (!user?.email) return;
     setLoading(true);
-    fetch(`http://localhost:5000/my-pets?email=${user.email}`)
+    fetch(`https://pet-adoption-server-steel.vercel.app/my-pets?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setPets(data))
       .catch(() => toast.error("Failed to load pets"))
@@ -72,7 +72,7 @@ const MyAddedPets = ({ user }) => {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:5000/pet/${pet._id}`, {
+        const res = await fetch(`https://pet-adoption-server-steel.vercel.app/pet/${pet._id}`, {
           method: "DELETE",
         });
         if (res.ok) {
@@ -94,7 +94,7 @@ const MyAddedPets = ({ user }) => {
   // Mark pet as adopted
   const markAdopted = async (pet) => {
     try {
-      const res = await fetch(`http://localhost:5000/pet/adopt/${pet._id}`, {
+      const res = await fetch(`https://pet-adoption-server-steel.vercel.app/pet/adopt/${pet._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ adopted: true }),

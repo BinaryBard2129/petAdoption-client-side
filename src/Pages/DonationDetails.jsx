@@ -16,7 +16,7 @@ const DonationDetails = () => {
   const { data: donation, isLoading, error } = useQuery({
     queryKey: ["donation", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/donation/${id}`);
+      const res = await axios.get(`https://pet-adoption-server-steel.vercel.app/donation/${id}`);
       return res.data;
     },
   });
@@ -24,7 +24,7 @@ const DonationDetails = () => {
   const { data: recommended = [] } = useQuery({
     queryKey: ["recommendedDonations"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/donation/recommended");
+      const res = await axios.get("https://pet-adoption-server-steel.vercel.app/donation/recommended");
       return res.data;
     },
   });

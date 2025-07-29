@@ -15,7 +15,7 @@ const DonationCampaigns = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/donation-campaigns?page=${page}&limit=6`);
+      const res = await axios.get(`https://pet-adoption-server-steel.vercel.app/donation-campaigns?page=${page}&limit=6`);
       setCampaigns((prev) => [...prev, ...res.data.campaigns]);
       setHasMore(res.data.hasMore);
       setPage((prev) => prev + 1);

@@ -10,7 +10,7 @@ const MyCampaigns = ({ user }) => {
 
     setLoading(true);
     axios
-      .get(`http://localhost:5000/my-campaigns?email=${user.email}`)
+      .get(`https://pet-adoption-server-steel.vercel.app/my-campaigns?email=${user.email}`)
       .then((res) => {
         setCampaigns(res.data);
         setLoading(false);
