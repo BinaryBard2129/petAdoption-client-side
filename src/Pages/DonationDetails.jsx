@@ -14,12 +14,12 @@ const DonationDetails = () => {
   const [donationAmount, setDonationAmount] = useState("");
 
   const { data: donation, isLoading, error } = useQuery({
-    queryKey: ["donation", id],
-    queryFn: async () => {
-      const res = await axios.get(`https://pet-adoption-server-steel.vercel.app/donation/${id}`);
-      return res.data;
-    },
-  });
+  queryKey: ["donation", id],
+  queryFn: async () => {
+    const res = await axios.get(`https://pet-adoption-server-steel.vercel.app/donation-campaigns/${id}`);
+    return res.data;
+  },
+});
 
   const { data: recommended = [] } = useQuery({
     queryKey: ["recommendedDonations"],

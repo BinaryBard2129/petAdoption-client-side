@@ -16,6 +16,8 @@ import MyCampaigns from "../Pages/MyCampaigns";
 import CreateCampaign from "../Pages/CreateCampaign";
 import AddPet from "../Pages/AddPet";
 import MyAddedPets from "../Pages/MyAddedPets";
+import Update from "../Pages/Update";
+import UpdateDonation from "../Pages/UpdateDonation";
 
  export const router = createBrowserRouter([
   {
@@ -43,7 +45,9 @@ import MyAddedPets from "../Pages/MyAddedPets";
       { path: "myCampaigns", element: <MyCampaigns></MyCampaigns> } ,// ✅ RELATIVE PATH
       {path: "createCampaign", element: <CreateCampaign></CreateCampaign>},
       {path: 'AddPet', element : <AddPet></AddPet>},
-      {path:'MyAddedPets', element:<MyAddedPets></MyAddedPets>}
+      {path:'MyAddedPets', element:<MyAddedPets></MyAddedPets>},
+      {path:'update/:id', element : <Update></Update>} ,
+      { path: "update-campaign/:id", element: <UpdateDonation></UpdateDonation>}
     ]
   }
 ]);

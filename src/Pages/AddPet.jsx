@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
 import axios from 'axios';
+import { AuthContext } from './AuthProvider';
 
 const petCategories = [
   { value: 'Cat', label: 'Cat' },
@@ -13,6 +14,7 @@ const petCategories = [
 ];
 
 const AddPet = () => {
+  const {user} = useContext(AuthContext)
   const formik = useFormik({
     initialValues: {
       imageUrl: '',
@@ -36,6 +38,7 @@ const AddPet = () => {
       try {
         const petData = {
           image: values.imageUrl,
+          creatorEmail : user?.email,
           name: values.name,
           age: values.age,
           category: values.category.value,

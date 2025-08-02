@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from './AuthProvider';
 
-const CreateCampaign = ({ userEmail, onCreated }) => {
+const CreateCampaign = ({  onCreated }) => {
+  const {user} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     petName: '',
     petImage: '',
@@ -35,7 +37,7 @@ const CreateCampaign = ({ userEmail, onCreated }) => {
         description,
         maxAmount: Number(maxAmount),
         donatedAmount: 0,
-        creatorEmail: userEmail,
+        creatorEmail: user.email,
       });
 
       // Try calling onCreated only if it's passed

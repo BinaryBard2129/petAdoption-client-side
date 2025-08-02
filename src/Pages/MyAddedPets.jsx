@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 import toast, { Toaster } from "react-hot-toast";
+import { data, Link } from "react-router";
+import { AuthContext } from "./AuthProvider";
 
-const MyAddedPets = ({ user }) => {
+const MyAddedPets = () => {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const {user} = useContext(AuthContext)
   // Sorting state
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
@@ -14,15 +16,15 @@ const MyAddedPets = ({ user }) => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    if (!user?.email) return;
+    // if (!user?.email) return;
     setLoading(true);
-    fetch(`https://pet-adoption-server-steel.vercel.app/my-pets?email=${user.email}`)
+    fetch(`https://pet-adoption-server-steel.vercel.app/my-pets?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setPets(data))
       .catch(() => toast.error("Failed to load pets"))
       .finally(() => setLoading(false));
   }, [user?.email]);
-
+ console.log(pets)
   // Sort handler
   const handleSort = (key) => {
     let direction = "asc";
@@ -173,14 +175,14 @@ const MyAddedPets = ({ user }) => {
                 {pet.adopted ? "Adopted" : "Not Adopted"}
               </td>
               <td className="border border-gray-300 px-4 py-2 space-x-2">
-                <button
+                <Link to={`/dashboard/update/${pet._id}`}>
+                 <button
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                  onClick={() =>
-                    alert(`Redirect to update pet page for pet id: ${pet._id}`)
-                  }
+                
                 >
                   Update
                 </button>
+                </Link>
                 <button
                   className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                   onClick={() => deletePet(pet)}

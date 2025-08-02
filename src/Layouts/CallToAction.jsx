@@ -2,8 +2,14 @@
 import React from "react";
 import ctaImage from "../assets/images/ctaimg.jpg";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 const CallToAction = () => {
+  // Markdown text with visible formatting for testing
+  const title = "Every paw deserves a **loving home** 🐾";
+  const subtitle =
+    "Your small act of kindness can **change their world**. *Adopt a pet today* and give them the life they deserve.";
+
   return (
     <div className="relative mb-8 w-full max-w-7xl mx-auto mt-16 rounded-lg overflow-hidden shadow-xl">
       <img
@@ -20,10 +26,22 @@ const CallToAction = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4 drop-shadow-md">
-            Every paw deserves a loving home 🐾
+            <ReactMarkdown
+              children={title}
+              components={{
+                // Prevent extra <p> wrapping inside <h2>
+                p: ({ node, children }) => <>{children}</>,
+              }}
+            />
           </h2>
           <p className="text-lg md:text-2xl font-medium drop-shadow-md">
-            Your small act of kindness can change their world. Adopt a pet today and give them the life they deserve.
+            <ReactMarkdown
+              children={subtitle}
+              components={{
+                // Prevent extra <p> wrapping inside <p>
+                p: ({ node, children }) => <>{children}</>,
+              }}
+            />
           </p>
         </motion.div>
       </div>
