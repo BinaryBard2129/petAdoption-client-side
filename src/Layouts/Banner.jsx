@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import bannerImg from "../assets/images/banner2.jpg"; // ensure high quality (1920x1080 recommended)
+import bannerImg from "../assets/images/banner2.jpg"; // ensure high quality
 
 const Banner = () => {
   return (
