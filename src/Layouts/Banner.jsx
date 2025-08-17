@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import bannerImg from "../assets/images/banner2.jpg"; // ensure high quality
+import bannerImg from "../assets/images/banner2.jpg"; 
 
 const Banner = () => {
   return (
