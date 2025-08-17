@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';  // important for styles
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const LIMIT = 6;
 
@@ -37,20 +37,19 @@ const PetListing = () => {
 
   const pets = data?.pages.flatMap(page => page.pets) || [];
 
-  // Render skeleton cards while loading
   if (isLoading) {
     return (
       <section className="max-w-7xl mt-16 mx-auto px-4 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {[...Array(LIMIT)].map((_, i) => (
             <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden animate-pulse">
-              <Skeleton height={224} /> {/* Image skeleton */}
+              <Skeleton height={224} />
               <div className="p-4">
-                <Skeleton height={30} width={`80%`} className="mb-2" /> {/* Name */}
-                <Skeleton height={20} width={`60%`} className="mb-1" /> {/* Location */}
-                <Skeleton height={20} width={`40%`} /> {/* Age */}
+                <Skeleton height={30} width={`80%`} className="mb-2" />
+                <Skeleton height={20} width={`60%`} className="mb-1" />
+                <Skeleton height={20} width={`40%`} />
                 <div className="mt-3">
-                  <Skeleton height={40} /> {/* Button */}
+                  <Skeleton height={40} />
                 </div>
               </div>
             </div>
@@ -72,19 +71,13 @@ const PetListing = () => {
           type="text"
           placeholder="🔍 Search by name"
           value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            refetch();
-          }}
-          className="w-full sm:w-1/2 px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-md transition"
+          onChange={(e) => { setSearch(e.target.value); refetch(); }}
+          className="w-full sm:w-1/2 px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition"
         />
         <select
           value={category}
-          onChange={(e) => {
-            setCategory(e.target.value);
-            refetch();
-          }}
-          className="w-full sm:w-1/4 px-5 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-md transition"
+          onChange={(e) => { setCategory(e.target.value); refetch(); }}
+          className="w-full sm:w-1/4 px-5 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition"
         >
           <option value="">All Categories</option>
           <option value="Cat">Cat</option>
@@ -106,30 +99,32 @@ const PetListing = () => {
           {pets.map((pet, index) => (
             <motion.div
               key={pet._id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 flex flex-col h-full"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <div className="relative group">
+              <div className="relative group w-full aspect-[4/3] overflow-hidden">
                 <img
                   src={pet.image}
                   alt={pet.name}
-                  className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute top-2 right-2 bg-white/80 px-3 py-1 rounded-full text-sm text-gray-800 font-semibold">
                   {pet.category}
                 </div>
               </div>
-              <div className="p-4">
-                <h2 className="text-2xl font-bold text-gray-800">{pet.name}</h2>
-                <p className="text-gray-600 mb-1">📍 {pet.location}</p>
-                <p className="text-gray-600 mb-3">🎂 Age: {pet.age}</p>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800">{pet.name}</h2>
+                  <p className="text-gray-600 mb-1">📍 {pet.location}</p>
+                  <p className="text-gray-600 mb-3">🎂 Age: {pet.age}</p>
+                </div>
                 <Link to={`/petListing/${pet._id}`}>
-                 <button className="mt-3 w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-2 rounded-lg shadow-lg hover:from-purple-500 hover:to-pink-500 hover:scale-105 transition-all duration-300 ease-in-out">
-                  View Details
-                </button>
+                  <button className="mt-3 w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold py-2 rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 ease-in-out">
+                    View Details
+                  </button>
                 </Link>
               </div>
             </motion.div>

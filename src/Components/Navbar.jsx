@@ -30,25 +30,25 @@ const Navbar = () => {
 
   const menuItems = (
     <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/petListing">Pet Listing</Link></li>
-      <li><Link to="/DonationCampaigns">Donations</Link></li>
-      {user && <li><Link to="/dashboardLayout">Dashboard</Link></li>}
-      {!user && <li><Link to="/login">Login</Link></li>}
-      {!user && <li><Link to="/register">Register</Link></li>}
+      <li><Link to="/" className="hover:text-blue-200 transition">Home</Link></li>
+      <li><Link to="/petListing" className="hover:text-blue-200 transition">Pet Listing</Link></li>
+      <li><Link to="/DonationCampaigns" className="hover:text-blue-200 transition">Donations</Link></li>
+      {user && <li><Link to="/dashboardLayout" className="hover:text-blue-200 transition">Dashboard</Link></li>}
+      {!user && <li><Link to="/login" className="hover:text-blue-200 transition">Login</Link></li>}
+      {!user && <li><Link to="/register" className="hover:text-blue-200 transition">Register</Link></li>}
     </>
   );
 
   return (
-    <div className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
+    <div className="fixed top-0 left-0 right-0 w-full z-50 bg-gradient-to-r from-blue-600 to-blue-500 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-blue-600">
+        <Link to="/" className="text-2xl font-bold text-white tracking-wide">
           🐾 PawPal
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex gap-6 items-center text-gray-700">
+        <ul className="hidden lg:flex gap-8 items-center text-white font-medium">
           {menuItems}
         </ul>
 
@@ -63,15 +63,15 @@ const Navbar = () => {
               <img
                 src={user.photoURL || "https://via.placeholder.com/40"}
                 alt="user"
-                className="w-10 h-10 rounded-full border-2 border-blue-600"
+                className="w-10 h-10 rounded-full border-2 border-white hover:scale-105 transition"
               />
             </div>
             {dropdownOpen && (
-              <div className="absolute right-0 top-12 w-40 bg-white border rounded shadow z-50">
+              <div className="absolute right-0 top-12 w-44 bg-white text-gray-700 border rounded-lg shadow-lg z-50">
                 <Link to="/dashboard" className="block px-4 py-2 hover:bg-gray-100">Dashboard</Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 hover:bg-red-500 hover:text-white"
+                  className="w-full text-left px-4 py-2 rounded-b-lg hover:bg-red-500 hover:text-white transition"
                 >
                   Logout
                 </button>
@@ -82,10 +82,10 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="btn btn-ghost">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="btn btn-ghost text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -103,14 +103,14 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="lg:hidden px-4 pb-4">
-          <ul className="flex flex-col gap-2 text-gray-700">
+        <div className="lg:hidden bg-blue-50 border-t border-blue-200 px-6 pb-4 shadow-md">
+          <ul className="flex flex-col gap-3 text-gray-700 font-medium">
             {menuItems}
             {user && (
               <li>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 hover:bg-red-500 hover:text-white rounded"
+                  className="w-full text-left px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition"
                 >
                   Logout
                 </button>
