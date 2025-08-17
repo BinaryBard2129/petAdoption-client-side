@@ -36,7 +36,7 @@ const Banner = () => {
             Your new best friend is just a click away.
           </motion.p>
 
-          {/* CTA Button */}
+         
           <motion.a
             href="/petListing"
             whileHover={{ scale: 1.07, boxShadow: "0px 0px 20px rgba(59,130,246,0.8)" }}
