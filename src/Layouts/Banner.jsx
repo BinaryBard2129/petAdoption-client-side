@@ -26,7 +26,7 @@ const Banner = () => {
             Adopt. Love. Repeat. 🐾
           </motion.h1>
 
-          {/* Subtitle */}
+          
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
