@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <section className="bg-gradient-to-br from-blue-50 to-white py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-        {/* Image side */}
+        
         <motion.img
           src="https://i.postimg.cc/XY9cp9Nm/istockphoto-1516239450-612x612.jpg"
           alt="About Us"
