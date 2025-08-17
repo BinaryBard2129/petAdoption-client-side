@@ -16,7 +16,7 @@ const Banner = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-center text-white max-w-3xl px-4"
         >
-          {/* Heading */}
+          
           <motion.h1
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
