@@ -8,7 +8,7 @@ const Banner = () => {
       className="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-cover bg-center overflow-hidden shadow-2xl"
       style={{ backgroundImage: `url(${bannerImg})` }}
     >
-      {/* Gradient Overlay */}
+      
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
